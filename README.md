@@ -1,124 +1,124 @@
-# Testing service
+# Сервис тестирования
 
 
-## Specification
-<details><summary>Expand</summary>
+## Техническое задание
+<details><summary>Подробнее</summary>
 
-### Summary
-A testing service needs to be done. There are test sets with answer options, one or more options must be correct
+### Основная информация
+Необходимо разработать сервис тестирования. Имеются наборы тестов с вариантами ответов, один или несколько вариантов должны быть правильными
 
-### Functional parts of the service
-* User registration
-* User authentication
-* Registered users can:
-  * Pass any of the test sets
-  * Consistently answer all questions, each question must be displayed on a new page with the form submission (re-answering and leaving unchecked is not allowed)
-  * After completing the test, you can see the result:
-    * number of correct/incorrect answers
-    * percentage of correct answers
+### Функциональные части сервиса
+* Регистрация пользователя
+* Аутентификация пользователя
+* Зарегистрированные пользователи могут:
+  * Пройти любой из наборов тестов
+  * Последовательно отвечать на все вопросы, каждый вопрос должен отображаться на новой странице с отправкой формы (повторный ответ и оставление вопроса без ответа не допускается)
+  * После прохождения теста вы можете увидеть результат:
+    * количество правильных/неправильных ответов
+    * процент правильных ответов
 
-### Admin panel sections
-* Standard user section
-* Section with test sets
-* Ability to:
-  * add questions
-  * add answers to questions
-  * mark correct answers
-* Validation that there must be at least 1 correct option
-* Validation that all options cannot be correct
-* Deleting questions/answers/changing correct solutions when editing the test sets
+### Разделы панели администратора
+* Стандартный раздел пользователя
+* Раздел с наборами тестов
+* Возможность:
+  * добавлять вопросы
+  * добавлять ответы на вопросы
+  * отмечать правильные ответы
+* Проверка того, что должен быть хотя бы 1 правильный вариант
+* Проверка того, что все варианты не могут быть правильными
+* Удаление вопросов/ответов/изменение правильных решений при редактировании тестовых наборов
 
-### Requirements
-* A list of all dependencies should be stored in `requirements.txt`, so you can install them with `pip install -r requirements.txt`
-* Development should be done in `.venv`, but the `.venv` directory itself should be added to `.gitignore`
-* Settings should be stored in `settings.py`, but also, if there is `settings_local.py` in the same directory, the settings from `settings_local.py` should override the settings in `settings.py`. If there is a `settings_local.py` file, the settings defined in it have higher priority. The `settings_local.py` file itself is added to `.gitignore`. Thus, each developer and beta server can use custom settings
+### Требования
+* Список всех зависимостей должен храниться в `requirements.txt` для возможности их установки с помощью `pip install -r requirements.txt`
+* Разработка должна вестись в `.venv`, но сам каталог `.venv` должен быть добавлен в `.gitignore`
+* Настройки должны храниться в `settings.py`, но если в той же директории есть `settings_local.py`, настройки из `settings_local.py` должны переопределять настройки в `settings.py`. Если существует файл `settings_local.py`, то настройки, определенные в нем, имеют более высокий приоритет. Сам файл `settings_local.py` добавляется в `.gitignore`. Таким образом, каждый разработчик и бета-сервер может использовать собственные настройки
 </details>
 
-## Technologies
+## Технологии
 
 [![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/Django-v5.0.7-blue?logo=Django)](https://www.djangoproject.com/)
 [![SQLite3](https://img.shields.io/badge/-SQLite3-464646?logo=SQLite)](https://www.sqlite.com/version3.html)
 [![docker_compose](https://img.shields.io/badge/-Docker-464646?logo=docker)](https://www.docker.com/)
 
-## Installation
+## Установка
 
-### Prerequisites
-* [Docker](https://www.docker.com/products/docker-desktop/) installed on your system
-* Git installed
+### Необходимые условия
+* [Docker](https://www.docker.com/products/docker-desktop/) установлен в вашей системе
+* Git установлен
 
-### Step 1: Clone the repository
+### Шаг 1: Клонирование репозитория
 
-1) Open your terminal (Command Prompt, PowerShell, or Git Bash)
+1) Откройте терминал (Command Prompt, PowerShell или Git Bash).
 
-2) Navigate to the directory where you want to clone the project:
+2) Перейдите в каталог, в который вы хотите клонировать проект:
 ```
 cd /path/to/your/directory
 ```
-or for Windows:
+или для Windows:
 ```
 cd "C:\Path\To\Your\Directory"
 ```
 
-3) Clone the repository using Git
+3) Клонируйте репозиторий с помощью Git
 ```
 git clone <repository-url>
 ```
 
-4) Move into the project directory
+4) Переместитесь в каталог проекта
 ```
-cd <project-directory-name>
+cd <имя директории проекта>
 ```
 
-### Step 2: Build and run the docker containers
+### Шаг 2: Сборка и запуск контейнеров docker
 
-1) Make sure the project contains a `Dockerfile` and `docker-compose.yml` file. These files define how the Docker container will be built and run
-2) Build the Docker container using Docker Compose
+1) Убедитесь, что проект содержит файлы `Dockerfile` и `docker-compose.yml`. Эти файлы определяют, как будет собираться и запускаться контейнер Docker
+2) Соберите контейнер Docker с помощью Docker Compose
 ```
 docker-compose build
 ```
-and run it
+и запустите его
 ```
 docker-compose up -d
 ```
 
-Debug test sets will be created automatically. The testing service will run on port 8000
+Отладочные наборы тестов будут созданы автоматически. Служба тестирования будет работать на порту 8000
 
-### Step 3: Create superuser
+### Шаг 3: Создание суперпользователя
 
-1) View running containers
+1) Просмотрите запущенные контейнеры
 ```
 docker-compose ps
 ```
-2) See the SERVICE column in the container row to use it in command to create superuser
+2) Посмотрите колонку SERVICE в строке контейнеров, чтобы использовать ее в команде для создания суперпользователя
 ```
 docker-compose exec -ti <service-name> python3 testing/manage.py createsuperuser
 ```
-3) Follow the prompts to set up the username, email, and password for the project superuser
+3) Следуйте подсказкам, чтобы задать имя пользователя, электронную почту и пароль для суперпользователя проекта
 
-## Usage
+## Использование
 
-### For user
+### Для пользователя
 
-1) Open http://127.0.0.1:8000/sign-up/ and sign-up
-2) You will be redirected to the login page. Login with username and password
-3) Choose any test set
-4) Answer questions
-5) Once you have answered all the questions, you will get a results screen
-6) You can logout using the logout link
+1) Откройте http://127.0.0.1:8000/sign-up/ и зарегистрируйтесь.
+2) Вы будете перенаправлены на страницу входа в систему. Войдите в систему, указав имя пользователя и пароль
+3) Выберите любой набор тестов
+4) Ответьте на вопросы
+5) После того как вы ответите на все вопросы, вы получите окно с результатами
+6) Вы можете выйти из системы, воспользовавшись ссылкой "Выход".
 
-You can leave questions unanswered and continue the test from where you left off
+Вы можете оставить вопросы без ответа и продолжить тест с того места, на котором остановились
 
-### For admin
+### Для администратора
 
-1) Open http://127.0.0.1:8000/admin/ and login with superuser credentials
-2) Open "Test sets" table and click "Add test set" (or just press "+ Add")
-    1) Enter test set name and description
-    2) Press "Save"
-    3) You can add questions before saving by pressing "Add another Question" and entering a question in corresponding field
-3) Open "Questions" table and click "Add question" (or just press "+ Add")
-    1) Choose a test set for the question
-    2) Enter text for the question
-    3) Add answers and indicate whether they are correct or not by pressing "Add another Answer" and checking the appropriate checkboxes
+1) Откройте http://127.0.0.1:8000/admin/ и войдите в систему с учетными данными суперпользователя.
+2) Откройте таблицу "Наборы тестов" и нажмите "Добавить набор тестов" (или просто нажмите "+ Add")
+    1) Введите название и описание тестового набора
+    2) Нажмите "Сохранить"
+    3) Вы можете добавить вопросы перед сохранением, нажав "Добавить еще один вопрос" и введя вопрос в соответствующее поле
+3) Откройте таблицу "Вопросы" и нажмите "Добавить вопрос" (или просто нажмите "+ Добавить")
+    1) Выберите набор тестов для вопроса
+    2) Введите текст вопроса
+    3) Добавьте ответы и укажите, правильные они или нет, нажав "Добавить другой ответ" и установив соответствующие флажки.
 
-You can also edit previously created test sets, questions and answers
+Вы также можете редактировать ранее созданные наборы тестов, вопросы и ответы
