@@ -62,7 +62,7 @@ cd "C:\Path\To\Your\Directory"
 
 3) Clone the repository using Git
 ```
-git clone <repository-url>
+git clone https://github.com/SZyablov/testing-service.git
 ```
 
 4) Move into the project directory
