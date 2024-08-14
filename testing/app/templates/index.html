@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Log-in{% endblock %}
+{% load static %}
+{% block css_sheet %}
+{% endblock %}
+{% block content %}
+
+<h1>Тесты</h1>
+<ul>
+    {% for test in tests %}
+        <li><a href="{% url 'take_test' test.id %}">{{ test.name }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

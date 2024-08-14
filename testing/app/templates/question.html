@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Log-in{% endblock %}
+{% load static %}
+{% block css_sheet %}
+{% endblock %}
+{% block content %}
+
+<h1>{{ question.text }}</h1>
+<form action="/test/{{ test_id.id }}/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="question_id" value="{{ question.id }}">
+    <button type="submit">Ответить</button>
+</form>
+
+{% endblock %}

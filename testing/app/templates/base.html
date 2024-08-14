@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"> -->
+    {% block css_sheet %}{% endblock %}
+    {% block js_script %}{% endblock %}
+    
+    <!-- <script src="{% static 'js/yt-kitchen.js' %}"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/watch.css' %}"> -->
+</head>
+<body>
+<div id="app">
+    <div class="header">
+        <div class="menu">
+            {%if request.user.is_authenticated %}
+                <span class="logout-text">Hi, {{ request.user.username | title }}</span>
+  		    	<a href="/logout">Logout</a>
+  		    {%else%}
+                <a href="/login">Login</a>
+  		    {%endif%}
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
