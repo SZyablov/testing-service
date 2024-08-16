@@ -1,5 +1,6 @@
 # Сервис тестирования
 
+[![Docker Image CI](https://github.com/SZyablov/testing-service/actions/workflows/docker-image.yml/badge.svg)](https://github.com/SZyablov/testing-service/actions/workflows/docker-image.yml)
 
 ## Техническое задание
 <details><summary>Подробнее</summary>
